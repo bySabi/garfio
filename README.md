@@ -15,6 +15,12 @@ The `Hookleton` library includes only the minimum core code needed to maintain s
 
 > We recommend always take a look first to [Hookleton](https://github.com/bySabi/hookleton) package
 
+## Benefits
+- Zero dependencies (only Hookleton that depends on React Hook)
+- Small size
+- Works in any environment that supports React Hook: _React Native_, _React Server-Side Rendering ([next.js](https://github.com/zeit/next.js/))_, _[Proto Native](https://github.com/kusti8/proton-native)_, ...
+
+
 ## Install
 
 - NPM: `npm i garfio`
