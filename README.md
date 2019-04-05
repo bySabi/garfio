@@ -1,4 +1,6 @@
-# Garfio
+<h1 align="center">
+  <p align="center" style="font-size: 1em">GARFIO</p>
+</h1>
 
 [![npm](https://img.shields.io/npm/v/garfio.svg)](https://www.npmjs.com/package/garfio)
 [![Coverage Status](https://coveralls.io/repos/github/bySabi/garfio/badge.svg?branch=master)](https://coveralls.io/github/bySabi/garfio?branch=master)
