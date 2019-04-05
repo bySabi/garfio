@@ -42,7 +42,7 @@ Garfio re-export the Hookleton API. You do not need to install hookleton module 
 
 
 # `Container` module
-###### Hookleton: [![size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/hookleton/lib/index.js?compression=gzip)](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/hookleton/lib/index.js) + Container: [![size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/garfio/lib/container.js?compression=gzip)](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/garfio/lib/container.js)
+###### Hookleton [![gzip size](http://img.badgesize.io/https://npmcdn.com/hookleton/lib/index.js?compression=gzip)]()  +  Container [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/container.js?compression=gzip)]()
 
 
 *Container* create different state scopes within the enclosing tags
@@ -179,7 +179,7 @@ export default () => {
 
 
 # `Store` module
-###### Hookleton: [![size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/hookleton/lib/index.js?compression=gzip)](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/hookleton/lib/index.js)+ Simple: [![size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/garfio/lib/simple.js?compression=gzip)](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/garfio/lib/simple.js)+ Store: [![size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/garfio/lib/store.js?compression=gzip)](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/garfio/lib/store.js)
+###### Hookleton [![gzip size](http://img.badgesize.io/https://npmcdn.com/hookleton/lib/index.js?compression=gzip)]()  +  Simple [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/simple.js?compression=gzip)]()  +  Store [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/store.js?compression=gzip)]()
 
 If in *Container* we use the enclosing tags to define different hookleton scopes, with `Store` the scope is declared using any element that is a valid key of a Javascript Map.
 Even so, we recommend the use of `strings` or `Symbols` to define the *Store* namespace.
@@ -255,7 +255,7 @@ export default () => <Values />;
  
 
 # `Simple` module
-###### Hookleton: [![size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/hookleton/lib/index.js?compression=gzip)](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/hookleton/lib/index.js) + Simple: [![size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/garfio/lib/simple.js?compression=gzip)](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/garfio/lib/simple.js)
+###### Hookleton [![gzip size](http://img.badgesize.io/https://npmcdn.com/hookleton/lib/index.js?compression=gzip)]()  +  Simple [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/simple.js?compression=gzip)]()
 
 `Simple` module does not add anything new. It simply allows you to use a hookleton without being explicit about the component that will act as *the host* of the hookleton. In other words, you do not need to use the `useHookleton.use()` API, just `useHookleton()`
 
