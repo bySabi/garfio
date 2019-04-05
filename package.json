@@ -1,6 +1,6 @@
 {
   "name": "garfio",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "extending Hookleton Pattern namespaces and more",
   "main": "lib/index.js",
   "react-native": "lib/index.js",

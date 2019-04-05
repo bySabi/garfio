@@ -140,7 +140,7 @@ export default () => {
 *Multiple arguments example:*
 ```javascript
 const useReduced = createHook(useReducer);
-const Container = useValue.Container;
+const Container = useReduced.Container;
 
 const reducer = (s, a) => s;
 const initial = 0;
@@ -162,7 +162,7 @@ When initializing hooks that use an initialization object it is possible to decl
 *Example:*
 ```javascript
 const useReduced = createHook(({ reducer, initial }) => useReducer(reducer, initial));
-const Container = useValue.Container;
+const Container = useReduced.Container;
 
 export default () => {
   return (
@@ -246,13 +246,13 @@ const Values = () => {
 
 export default () => <Values />;
 ```
-> The Store API and its functionality is inspired in packages like: 
+> The Store API and its functionality is inspired in packages like:
  [shared-state-hook](https://github.com/magnumjs/shared-state-hook),
  [react-hook-shared-state](https://github.com/philippguertler/react-hook-shared-state),
  [reactn](https://github.com/CharlesStover/reactn),
  [react-shared-hooks](https://github.com/dimapaloskin/react-shared-hooks),
  [react-hookstore](https://github.com/jhonnymichel/react-hookstore)
- 
+
 
 # `Simple` module
 ###### Hookleton [![gzip size](http://img.badgesize.io/https://npmcdn.com/hookleton/lib/index.js?compression=gzip)]()  +  Simple [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/simple.js?compression=gzip)]()
