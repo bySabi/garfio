@@ -10,6 +10,6 @@ attic
 example/out
 package-lock.json
 
-simple.js
-store.js
-container.js
+./simple.js
+./store.js
+./container.js

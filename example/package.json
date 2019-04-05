@@ -1,7 +1,7 @@
 {
-  "name": "hookleton-example",
+  "name": "garfio-example",
   "version": "0.0.1",
-  "description": "Hookleton example",
+  "description": "Garfio example",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -10,7 +10,8 @@
   },
   "keywords": [
     "Example",
-    "Hookleton"
+    "Hookleton",
+    "Garfio"
   ],
   "author": "Félix A.A. <bysabi.files@gmail.com>",
   "license": "MIT",
