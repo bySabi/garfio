@@ -2,7 +2,7 @@ const webpack = require('webpack');
 
 const isProd = (process.env.NODE_ENV || 'production') === 'production';
 
-const assetPrefix = isProd ? '/hookleton' : '';
+const assetPrefix = isProd ? '/garfio' : '';
 
 module.exports = {
   exportPathMap: () => ({
