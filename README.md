@@ -24,6 +24,14 @@ The `Hookleton` library includes only the minimum core code needed to maintain s
 * [Store](https://github.com/bySabi/garfio#store-module)
 * [Simple](https://github.com/bySabi/garfio#simple-module)
 
+## Hookleton API
+
+Garfio re-export the Hookleton API. You do not need to install hookleton module explicitly if you want to use it. Just:
+ ```javascript
+ // createHook from Hookleton module
+ import { createHook } from 'garfio'
+ ```
+
 
 # `Container` module
 ###### Hookleton: [![size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/hookleton/lib/index.js?compression=gzip)](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/hookleton/lib/index.js) + Container: [![size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/garfio/lib/container.js?compression=gzip)](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/garfio/lib/container.js)
