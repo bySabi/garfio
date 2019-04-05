@@ -20,9 +20,9 @@ The `Hookleton` library includes only the minimum core code needed to maintain s
 
 
 ## include subModules
-* Container
-* Store
-* Simple
+* [Container](https://github.com/bySabi/garfio#container-module)
+* [Store](https://github.com/bySabi/garfio#store-module)
+* [Simple](https://github.com/bySabi/garfio#simple-module)
 
 
 # `Container` module
