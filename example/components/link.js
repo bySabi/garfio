@@ -1,19 +1,9 @@
-import Link from 'next/link';
+import NextJsLink from 'next/link';
 
-export default class PrefixedLink extends React.Component {
-  render() {
-    const { href, as = href, ...props } = this.props;
-    const { prefix = '' } = this.context;
-    return <Link href={href} as={`${prefix}${as}`} {...props} />;
-  }
-}
+const assetPrefix = process.env.ASSET_PREFIX;
 
-export class PathPrefix extends React.Component {
-  getChildContext() {
-    return { prefix: this.props.prefix || '' };
-  }
+const Link = ({ href, ...rest }) => (
+  <NextJsLink href={href} as={`${assetPrefix}${href}`} {...rest} />
+);
 
-  render() {
-    return this.props.children;
-  }
-}
+export default Link;
