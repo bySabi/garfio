@@ -9,7 +9,7 @@ module.exports = {
     '/': { page: '/' },
     '/counter': { page: '/counter' },
     '/counterNested': { page: '/counterNested' },
-    '/counters10x40': { page: '/counters10x40' }
+    '/counters10x40': { page: '/counters10x40' },
   }),
   assetPrefix: assetPrefix,
   webpack: config => {

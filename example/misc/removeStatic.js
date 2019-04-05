@@ -1,4 +1,4 @@
-const fs = require('fs-extra')
+const fs = require('fs-extra');
 
 const RM = [
   '.next',
@@ -7,7 +7,7 @@ const RM = [
   '../counter',
   '../counterNested',
   '../counters10x40',
-  '../index.html'
+  '../index.html',
 ];
 
 RM.forEach(p => fs.removeSync(__dirname + '/../' + p));

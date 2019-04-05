@@ -25,8 +25,8 @@ git push origin gh-pages
 
 ## Contributing
 
-* Documentation improvement
-* Feel free to send any PR
+- Documentation improvement
+- Feel free to send any PR
 
 ## License
 
