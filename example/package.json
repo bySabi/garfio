@@ -20,7 +20,7 @@
   "author": "Félix A.A. <bysabi.files@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "garfio": "^0.1.1",
+    "garfio": "^0.1.2",
     "next": "^8.0.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"

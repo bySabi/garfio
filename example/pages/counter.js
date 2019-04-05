@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { createHook } from 'garfio/simple';
 
 // useCounter is a useState but global
