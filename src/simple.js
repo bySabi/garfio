@@ -1,4 +1,4 @@
-import { useMemo, useLayoutEffect } from 'react';
+import { useMemo, useEffect } from 'react';
 import { createHook as createHookCore } from 'hookleton';
 
 export function createHook() {
@@ -6,7 +6,7 @@ export function createHook() {
   let h;
   function use() {
     const host = useMemo(() => !h && (h = true), []);
-    return host ? (useLayoutEffect(() => () => (h = false), []), hook.use()) : hook();
+    return host ? (useEffect(() => () => (h = false), []), hook.use()) : hook();
   }
   function useFn() {
     return use();

@@ -1,6 +1,6 @@
 {
   "name": "garfio",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "extending Hookleton Pattern namespaces and more",
   "main": "lib/index.js",
   "react-native": "lib/index.js",
@@ -48,7 +48,7 @@
     "url": "https://github.com/bySabi/garfio/issues"
   },
   "dependencies": {
-    "hookleton": "^0.4.3"
+    "hookleton": "^0.4.6"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
