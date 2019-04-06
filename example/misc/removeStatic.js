@@ -8,6 +8,7 @@ const RM = [
   '../counterNested',
   '../counters10x40',
   '../index.html',
+  '../.nojekyll'
 ];
 
 RM.forEach(p => fs.removeSync(__dirname + '/../' + p));

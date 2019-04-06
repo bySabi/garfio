@@ -5,7 +5,6 @@ coverage
 dist
 .cache
 .next
-_next
 **/.next
 attic
 example/out

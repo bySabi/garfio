@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 
-const PREFIX = '/garfio';
+const isProd = (process.env.NODE_ENV || 'production') === 'production';
+
+const assetPrefix = isProd ? '/garfio' : '';
 
 module.exports = {
   exportPathMap: () => ({
@@ -9,5 +11,14 @@ module.exports = {
     '/counterNested': { page: '/counterNested' },
     '/counters10x40': { page: '/counters10x40' },
   }),
-  assetPrefix: PREFIX,
+  assetPrefix: assetPrefix,
+  webpack: config => {
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env.ASSET_PREFIX': JSON.stringify(assetPrefix),
+      })
+    );
+
+    return config;
+  }
 };
