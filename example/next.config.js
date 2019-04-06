@@ -1,8 +1,9 @@
 const webpack = require('webpack');
 
 const isProd = (process.env.NODE_ENV || 'production') === 'production';
+const isDevelop = process.env.NODE_ENV === 'development';
 
-const assetPrefix = isProd ? '/garfio' : '';
+const assetPrefix = !isDevelop ? '/garfio' : '';
 
 module.exports = {
   exportPathMap: () => ({
