@@ -13,7 +13,7 @@ The `Hookleton` library includes only the minimum core code needed to maintain s
 
 *Garfio* solves the problem of namespaces using several user-selectable approaches. In the future, more approaches could be added if relevant.
 
-> We recommend always take a look first to [Hookleton](https://github.com/bySabi/hookleton) package
+> It is recommend take a look first to [Hookleton](https://github.com/bySabi/hookleton) package Doc
 
 ## Benefits
 - Zero dependencies (only Hookleton that depends on React Hook)
@@ -112,6 +112,8 @@ Below are examples of usage and automatic conversions.
 
 *Single argument example:*
 ```javascript
+import { createHook } from 'garfio/container';
+
 const useValue = createHook(useState);
 const Container = useValue.Container;
 
@@ -139,6 +141,8 @@ export default () => {
 
 *Multiple arguments example:*
 ```javascript
+import { createHook } from 'garfio/container';
+
 const useReduced = createHook(useReducer);
 const Container = useReduced.Container;
 
@@ -161,6 +165,8 @@ When initializing hooks that use an initialization object it is possible to decl
 
 *Example:*
 ```javascript
+import { createHook } from 'garfio/container';
+
 const useReduced = createHook(({ reducer, initial }) => useReducer(reducer, initial));
 const Container = useReduced.Container;
 
