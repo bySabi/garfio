@@ -21,11 +21,16 @@ The `Hookleton` library includes only the minimum core code needed to maintain s
 - Works in any environment that supports React Hook: _React Native_, _React Server-Side Rendering ([next.js](https://github.com/zeit/next.js/))_, _[Proto Native](https://github.com/kusti8/proton-native)_, ...
 
 
-## Install
+## Installation
 
-- NPM: `npm i garfio`
-- Yarn: `yarn add garfio`
+```bash
+# NPM
+npm i garfio
 
+# Yarn
+yarn add garfio
+
+```
 
 ## include subModules
 * [Container](https://github.com/bySabi/garfio#container-module)
