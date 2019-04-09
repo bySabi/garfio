@@ -32,7 +32,7 @@ yarn add garfio
 
 ```
 
-## include subModules
+## included subModules
 * [Container](https://github.com/bySabi/garfio#container-module)
 * [Store](https://github.com/bySabi/garfio#store-module)
 * [Simple](https://github.com/bySabi/garfio#simple-module)
