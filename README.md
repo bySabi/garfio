@@ -32,6 +32,9 @@ yarn add garfio
 
 ```
 
+## External resources
+* Medium: [Introduccing Hookleton: How to avoid the “Coupling of Concerns(CoC)” in React Apps](https://medium.com/introduccing-hookleton-a-simple-solution-to-coc/introduccing-hookleton-how-to-avoid-the-coupling-of-concerns-coc-in-react-apps-383322e5bc3)
+
 ## included subModules
 * [Container](https://github.com/bySabi/garfio#container-module)
 * [Store](https://github.com/bySabi/garfio#store-module)
