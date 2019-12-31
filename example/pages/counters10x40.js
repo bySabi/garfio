@@ -1,19 +1,19 @@
 import { useState } from 'react';
-import { createStore, useStore, getStore } from 'garfio/store';
+import { createStore, useStore } from 'garfio/store';
 
-createStore('1', useState, 0);
-createStore('2', useState, 1);
-createStore('3', useState, 2);
-createStore('4', useState, 3);
-createStore('5', useState, 4);
+const one = createStore(useState, 0);
+const two = createStore(useState, 1);
+const three = createStore(useState, 2);
+const four = createStore(useState, 3);
+const five = createStore(useState, 4);
 
 const Counters = () => {
   // 'tup' is tuple [count, setCount]
-  const tup1 = useStore('1');
-  const tup2 = useStore('2');
-  const tup3 = useStore('3');
-  const tup4 = useStore('4');
-  const tup5 = useStore('5');
+  const tup1 = useStore(one);
+  const tup2 = useStore(two);
+  const tup3 = useStore(three);
+  const tup4 = useStore(four);
+  const tup5 = useStore(five);
 
   const increment = set => c => set(c => c + 1);
   const decrement = set => c => set(c => c - 1);
@@ -55,12 +55,12 @@ const TableCounters = () => (
 // destructured standalone setters will rerender components that "use" the stores.
 const SetDefaults = () => {
   const set = (store, value) => {
-    const [, set] = getStore(store);
+    const [, set] = store.get(store);
     set(value);
   };
 
   return (
-    <button onClick={() => (set('1', 0), set('2', 1), set('3', 2), set('4', 3), set('5', 4))}>
+    <button onClick={() => (set(one, 0), set(two, 1), set(three, 2), set(four, 3), set(five, 4))}>
       SET defaults
     </button>
   );
