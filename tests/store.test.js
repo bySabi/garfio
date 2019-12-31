@@ -1,30 +1,26 @@
 import React from 'react';
 import { act, cleanup, renderHook } from 'react-hooks-testing-library';
-import { createStore, useStore, getStore, removeStore } from '../src/store';
+import { createStore, useStore } from '../src/store';
 
-const store3 = Symbol();
-
-createStore('1', React.useState, 0);
-createStore('2', () => {
+const one = createStore(React.useState, 0);
+const two = createStore(() => {
   const [s, set] = React.useState(1);
   return { count: s, setCount: set };
 });
-createStore(store3, React.useState, 2);
-createStore('4', React.useState);
+const nonStore = {};
 
 beforeEach(() => {});
-
 afterEach(cleanup);
 
 test('should return initial counter value', () => {
   let count;
-  renderHook(() => ([count] = useStore('1')));
+  renderHook(() => ([count] = useStore(one)));
   expect(count).toBe(0);
 });
 
 test('should increase/decrease counter value', () => {
   let count, setCount;
-  renderHook(() => ([count, setCount] = useStore('1')));
+  renderHook(() => ([count, setCount] = useStore(one)));
   expect(count).toBe(0);
 
   act(() => {
@@ -35,10 +31,10 @@ test('should increase/decrease counter value', () => {
 
 test('should increase/decrease counter value from standalone', () => {
   let count;
-  renderHook(() => ([count] = useStore('1')));
+  renderHook(() => ([count] = useStore(one)));
   expect(count).toBe(0);
 
-  const [, setCount] = getStore('1');
+  const [, setCount] = one.get();
   act(() => {
     setCount(1);
   });
@@ -47,9 +43,9 @@ test('should increase/decrease counter value from standalone', () => {
 
 test('should shared hook output', () => {
   let out1;
-  renderHook(() => (out1 = useStore('1')));
+  renderHook(() => (out1 = useStore(one)));
   let out2;
-  renderHook(() => (out2 = useStore('1')));
+  renderHook(() => (out2 = useStore(one)));
   expect(out1).toBe(out2);
 
   let [count] = out2;
@@ -66,9 +62,9 @@ test('should shared hook output', () => {
 
 test('should shared hook output#2', () => {
   let out1;
-  renderHook(() => (out1 = useStore('2')));
+  renderHook(() => (out1 = useStore(two)));
   let out2;
-  renderHook(() => (out2 = useStore('2')));
+  renderHook(() => (out2 = useStore(two)));
   expect(out1).toBe(out2);
 
   let { count } = out2;
@@ -87,18 +83,18 @@ test('should shared hook output#2', () => {
 
 test('should ignore initial param from hook call', () => {
   let count1;
-  renderHook(() => ([count1] = useStore('1', 4)));
+  renderHook(() => ([count1] = useStore(one, 4)));
   let count2;
-  renderHook(() => ([count2] = useStore('1', 5)));
+  renderHook(() => ([count2] = useStore(one, 5)));
   expect(count1).toBe(0);
   expect(count1).toBe(count2);
 });
 
 test('should non-Host continue life after Host unmount', () => {
-  const { unmount } = renderHook(() => useStore('1'));
+  const { unmount } = renderHook(() => useStore(one));
 
   let count;
-  renderHook(() => ([count] = useStore('1'))); // a non-Host
+  renderHook(() => ([count] = useStore(one))); // a non-Host
   expect(count).toBe(0);
 
   unmount(); // Host
@@ -107,30 +103,12 @@ test('should non-Host continue life after Host unmount', () => {
   expect(count).toBe(0);
 });
 
-test('should return initial counter value with Symbol store name', () => {
-  let count;
-  renderHook(() => ([count] = useStore(store3)));
-  expect(count).toBe(2);
-});
-
 test('should return true on store removed', () => {
-  expect(removeStore('1')).toBe(true);
-});
-
-test('should console.error on already exist store', () => {
-  const spy = spyOn(console, 'error');
-  createStore('4', React.useState);
-  expect(spy).toHaveBeenCalled();
+  expect(one.delete(one)).toBe(true);
 });
 
 test('should console.error on not found store #1', () => {
   const spy = spyOn(console, 'error');
-  renderHook(() => useStore('5'));
-  expect(spy).toHaveBeenCalled();
-});
-
-test('should console.error on not found store #2', () => {
-  const spy = spyOn(console, 'error');
-  getStore('5');
+  renderHook(() => useStore(nonStore));
   expect(spy).toHaveBeenCalled();
 });

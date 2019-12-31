@@ -7,19 +7,21 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/bySabi/10)
 
-Garfio is a module composed of several submodules that try to facilitate the use of the *hookletons*. A [hookleton](https://github.com/bySabi/hookleton) is a globalized React Hook, this means that once declared its namespace it is linked to a single state.
+Garfio is a module composed of several submodules that try to facilitate the use of the _hookletons_. A [hookleton](https://github.com/bySabi/hookleton) is a globalized React Hook, this means that once declared its namespace it is linked to a single state.
 
-The `Hookleton` library includes only the minimum core code needed to maintain state synchronization between the users of the hookleton but was designed to be fully extensible. The submodules of `Garfio` are extensions of this code to be able to use the same hookleton *namespace* with different states.
+The `Hookleton` library includes only the minimum core code needed to maintain state synchronization between "the users" of the hookleton, but was designed to be fully extensible. The submodules of `Garfio` are extensions of this code to be able to use the same hookleton _namespace_ with different states.
 
-*Garfio* solves the problem of namespaces using several user-selectable approaches. In the future, more approaches could be added if relevant.
+_Garfio_ solves the problem of namespaces using several user-selectable approaches. In the future, more approaches could be added if relevant.
 
 > It is recommend take a look first to [Hookleton](https://github.com/bySabi/hookleton) package Doc
 
 ## Benefits
-- Zero dependencies (only Hookleton that depends on React Hook)
-- Small size
-- Works in any environment that supports React Hook: _React Native_, _React Server-Side Rendering ([next.js](https://github.com/zeit/next.js/))_, _[Proto Native](https://github.com/kusti8/proton-native)_, ...
 
+- Small size
+- Zero dependencies (only Hookleton that depends on React Hook)
+- 👉 without using React Context
+- 👉 not complex user *memoizations* needed. Out of the box performance 
+- Works in any environment that supports React Hook: _React Native_, _React Server-Side Rendering ([next.js](https://github.com/zeit/next.js/))_, _[Proto Native](https://github.com/kusti8/proton-native)_, ...
 
 ## Installation
 
@@ -33,45 +35,47 @@ yarn add garfio
 ```
 
 ## External resources
-* Medium: [Introduccing Hookleton: How to avoid the “Coupling of Concerns(CoC)” in React Apps](https://medium.com/introduccing-hookleton-a-simple-solution-to-coc/introduccing-hookleton-how-to-avoid-the-coupling-of-concerns-coc-in-react-apps-383322e5bc3)
+
+- Medium: [Introduccing Hookleton: How to avoid the “Coupling of Concerns(CoC)” in React Apps](https://medium.com/introduccing-hookleton-a-simple-solution-to-coc/introduccing-hookleton-how-to-avoid-the-coupling-of-concerns-coc-in-react-apps-383322e5bc3)
 
 ## included subModules
-* [Container](https://github.com/bySabi/garfio#container-module)
-* [Store](https://github.com/bySabi/garfio#store-module)
-* [Simple](https://github.com/bySabi/garfio#simple-module)
+
+- [Container](https://github.com/bySabi/garfio#container-module)
+- [Store](https://github.com/bySabi/garfio#store-module)
+- [Simple](https://github.com/bySabi/garfio#simple-module)
 
 ## Hookleton API
 
 Garfio re-export the Hookleton API. You do not need to install hookleton module explicitly if you want to use it. Just:
- ```javascript
- // createHook from Hookleton module
- import { createHook } from 'garfio'
- ```
 
+```javascript
+// createHook from Hookleton module
+import { createHook } from 'garfio';
+```
 
 # `Container` module
-###### Hookleton [![gzip size](http://img.badgesize.io/https://npmcdn.com/hookleton/lib/index.js?compression=gzip)]()  +  Container [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/container.js?compression=gzip)]()
 
+###### Hookleton [![gzip size](http://img.badgesize.io/https://npmcdn.com/hookleton/lib/index.js?compression=gzip)]() + Container [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/container.js?compression=gzip)]()
 
-*Container* create different state scopes within the enclosing tags
-
+_Container_ create different state scopes within the enclosing tags and __without__ using React *Context*
 
 ## API
 
 `createHook(useHook, ...initial?): useHookleton`
 
 ### Parameters
+
 - `useHook` is the user provide Hook
 - `initial` any number of params that _useHook_ will accept
 
 ### Returns
-- `useHookleton` returned Hookleton. Called by *non-host* components
+
+- `useHookleton` returned Hookleton. Called by _non-host_ components
 - `useHookleton.Container` Container component for enclosing tags scopes
 - `useHookleton.get` function that get the current output of the Hookleton.
-For standalone use
+  For standalone use
 
 ## usage Example
-
 
 [page](https://bysabi.github.io/garfio/counterNested/) | [source](./example/pages/counterNested.js)
 
@@ -110,15 +114,17 @@ export default () => (
 ```
 
 ## initial arguments API
-*Containers* can be initialized in two ways:
 
+_Containers_ can be initialized in two ways:
 
-### `initialArg` *prop*
+### `initialArg` _prop_
+
 **initialArg** is an array of arguments which is `spread` to the Hook provided by the user. If the value is not an array then it is converted. To pass an array as a start element, it must be enclosed in an array too.
 
 Below are examples of usage and automatic conversions.
 
-*Single argument example:*
+_Single argument example:_
+
 ```javascript
 import { createHook } from 'garfio/container';
 
@@ -128,16 +134,19 @@ const Container = useValue.Container;
 export default () => {
   return (
     <Container initialArg={3}>
-      { /* output number 3 */
+      {
+        /* output number 3 */
         useValue()[0]
       }
       <Container initialArg="three">
-        { /* output string "three" */
+        {
+          /* output string "three" */
           useValue()[0]
         }
       </Container>
-      <Container initialArg={[[1,2,3]]}>
-        { /* output array [1,2,3] in JSX */
+      <Container initialArg={[[1, 2, 3]]}>
+        {
+          /* output array [1,2,3] in JSX */
           useValue()[0]
         }
       </Container>
@@ -146,8 +155,8 @@ export default () => {
 };
 ```
 
+_Multiple arguments example:_
 
-*Multiple arguments example:*
 ```javascript
 import { createHook } from 'garfio/container';
 
@@ -160,7 +169,8 @@ const initial = 0;
 export default () => {
   return (
     <Container initialArg={[reducer, initial]}>
-      { /* output number 0(initial) */
+      {
+        /* output number 0(initial) */
         useReduced()[0]
       }
     </Container>
@@ -168,10 +178,12 @@ export default () => {
 };
 ```
 
-### initial `object properties` like *props*
-When initializing hooks that use an initialization object it is possible to declare `object properties` as *props* of the Container.
+### initial `object properties` like _props_
 
-*Example:*
+When initializing hooks that use an initialization object it is possible to declare `object properties` as _props_ of the Container.
+
+_Example:_
+
 ```javascript
 import { createHook } from 'garfio/container';
 
@@ -180,8 +192,9 @@ const Container = useReduced.Container;
 
 export default () => {
   return (
-    <Container reducer={(s,a) => s} initial={0}>
-      { /* output number 0(initial) */
+    <Container reducer={(s, a) => s} initial={0}>
+      {
+        /* output number 0(initial) */
         useReduced()[0]
       }
     </Container>
@@ -189,105 +202,116 @@ export default () => {
 };
 ```
 
-> The *Container* API and its functionality is inspired by the [constante](https://github.com/diegohaz/constate) package although React Context has not been used for its implementation
-
+> The _Container_ API and its functionality is inspired by the [constante](https://github.com/diegohaz/constate) package although React Context has not been used for its implementation
 
 # `Store` module
-###### Hookleton [![gzip size](http://img.badgesize.io/https://npmcdn.com/hookleton/lib/index.js?compression=gzip)]()  +  Simple [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/simple.js?compression=gzip)]()  +  Store [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/store.js?compression=gzip)]()
 
-If in *Container* we use the enclosing tags to define different hookleton scopes, with `Store` the scope is declared using any element that is a valid key of a Javascript Map.
-Even so, we recommend the use of `strings` or `Symbols` to define the *Store* namespace.
+###### Hookleton [![gzip size](http://img.badgesize.io/https://npmcdn.com/hookleton/lib/index.js?compression=gzip)]() + Simple [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/simple.js?compression=gzip)]() + Store [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/store.js?compression=gzip)]()
 
+If in _Container_ we use the enclosing tags to define different hookleton scopes, with `Store` the scope is linked to a single object
 
 ## API
 
-### store creation
-`createStore(store, hook, ...initial?)`
+### Store creation
 
-* `store` unique identifier. Ex: string | Symbol
-* `useHook` is the user provide Hook
-* `initial` any number of params that useHook will accept
+`createStore(hook, ...initial?): Store`
 
+#### Parameters
 
-### store `use`
-`useStore(store, ...initial?): any`
+- `hook` is the user provide Hook
+- `initial` any number of params that **hook** will accept
 
-* `store` unique identifier. Ex: string | Symbol
-* `initial` any number of params that useHook will accept
+> - `initial` parameters from Store *creation* step has priority over `initial` parameters from Store *use*.
+> - Do not pass any parameters in the Store creation if you want to initialize it within some Component (when you `use` the hookleton).
+> - Remember that hookletons are global, so they are only initialized once, in the first component rendered. The other initializations will be ignored.
+>  
 
-Return value is any value returned by the user's Hook
+#### Returns
 
-### standalone store
-`getStore(store): any`
+`Store` sigle object (unique), with this interface:
+```
+{
+  get(): any;
+  delete(): boolean;
+}
+```
 
-* `store` unique identifier. Ex: string | Symbol
+- `get()` for standalone store usage
 
 > Standalone refers to obtaining the current state of the hookleton from any part of the application, including outside the React components. This state is not updated automatically
 
-### remove store
+- `delete()` for store delete. Return `true` on sucess
 
-`removeStore(store): boolean`
 
-* `store` unique identifier. Ex: string | Symbol
+### Store `use`
 
-Return `true` on sucess
+`useStore(store, ...initial?): any`
+
+#### Parameters
+
+- `store` already exist **store**
+- `initial` any number of params that provided **hook** will accept
+
+
+#### Returns 
+ Return value is any value returned by the **hook**
 
 ## usage Example
 
 ```javascript
-import { createStore, useStore, getStore } from 'garfio/store';
+import { createStore, useStore } from 'garfio/store';
 
-const three = Symbol();
-
-createStore('1', useState, 1);
-createStore('two', useState, 2);
-createStore(three, useReducer);
+const one = createStore(useState, 1);
+const two = createStore(useState, 2);
+const three = createStore(useReducer);
 
 const reducer = (s, a) => s;
 
 const Values = () => {
-  const [one, setOne] = useStore('1');
-  useStore('two');
-  const [two] = getStore('two');
-  const [three, dispatch] = useStore(three, reducer, 3);
-  // output: 1,two,3
+  const [v1, set] = useStore(one);
+  useStore(two);
+  const [v2] = two.get();
+  const [v3, dispatch] = useStore(three, reducer, 3);
+  // output: 1,2,3
   return (
     <span>
-      {one},{two},{three}
+      {v1},{v2},{v3}
     </span>
   );
 };
 
 export default () => <Values />;
 ```
-> The Store API and its functionality is inspired in packages like:
- [shared-state-hook](https://github.com/magnumjs/shared-state-hook),
- [react-hook-shared-state](https://github.com/philippguertler/react-hook-shared-state),
- [reactn](https://github.com/CharlesStover/reactn),
- [react-shared-hooks](https://github.com/dimapaloskin/react-shared-hooks),
- [react-hookstore](https://github.com/jhonnymichel/react-hookstore)
 
+> The Store API and its functionality is inspired in packages like:
+> [shared-state-hook](https://github.com/magnumjs/shared-state-hook),
+> [react-hook-shared-state](https://github.com/philippguertler/react-hook-shared-state),
+> [reactn](https://github.com/CharlesStover/reactn),
+> [react-shared-hooks](https://github.com/dimapaloskin/react-shared-hooks),
+> [react-hookstore](https://github.com/jhonnymichel/react-hookstore)
 
 # `Simple` module
-###### Hookleton [![gzip size](http://img.badgesize.io/https://npmcdn.com/hookleton/lib/index.js?compression=gzip)]()  +  Simple [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/simple.js?compression=gzip)]()
 
-`Simple` module does not add anything new. It simply allows you to use a hookleton without being explicit about the component that will act as *the host* of the hookleton. In other words, you do not need to use the `useHookleton.use()` API, just `useHookleton()`
+###### Hookleton [![gzip size](http://img.badgesize.io/https://npmcdn.com/hookleton/lib/index.js?compression=gzip)]() + Simple [![gzip size](http://img.badgesize.io/https://npmcdn.com/garfio/lib/simple.js?compression=gzip)]()
 
+`Simple` module does not add anything new. It simply allows you to use a hookleton without being explicit about the component that will act as _the host_ of the hookleton. In other words, you do not need to use the `useHookleton.use()` API, just `useHookleton()`
 
 ## API
+
 `createHook(useHook, ...initial): useHookleton`
 
 ### Parameters
+
 - `useHook` is the user provide Hook
 - `initial` any number of params that _useHook_ will accept
 
 > **initial** params are required. Any param used in `useHookleton` are ignored.
 
 ### Returns
-- `useHookleton` returned Hookleton. Called by *non-host* components
-- `useHookleton.get` function that get the current output of the Hookleton.
-For standalone use
 
+- `useHookleton` returned Hookleton. Called by _non-host_ components
+- `useHookleton.get` function that get the current output of the Hookleton.
+  For standalone use
 
 ## usage Example
 
@@ -317,9 +341,7 @@ export default () => (
     <Increment />
   </div>
 );
-
 ```
-
 
 # more Examples
 
@@ -329,10 +351,9 @@ Examples [page](https://bysabi.github.io/garfio/) include:
 - Counters 10x40 with "Store" [page](https://bysabi.github.io/garfio/counters10x40/) | [source](./example/pages/counters10x40.js)
 - Counter with "Simple" [page](https://bysabi.github.io/garfio/counter/) | [source](./example/pages/counter.js)
 
-
 # for a deeper insight ...
-Please read *Hookleton* [Doc](https://github.com/bySabi/hookleton/blob/master/README.md)
 
+Please read _Hookleton_ [Doc](https://github.com/bySabi/hookleton/blob/master/README.md)
 
 ## Credits
 

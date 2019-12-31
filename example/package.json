@@ -1,6 +1,6 @@
 {
   "name": "garfio-example",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Garfio example",
   "main": "index.js",
   "scripts": {
